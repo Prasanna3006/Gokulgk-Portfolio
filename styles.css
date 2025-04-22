@@ -84,6 +84,7 @@
     width: 100%;
     background-color: #1976D20A;
     padding: 40px 0px;
+    border-radius: 25px;
   }
   
   .intro-text {
@@ -289,12 +290,13 @@
     font-size: 1.3rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    text-align: left;
+    text-align: center;
 }
 
 .service-description {
     color: #555;
     line-height: 1.5;
+    text-align: center;
 }
 
 .service-card {
