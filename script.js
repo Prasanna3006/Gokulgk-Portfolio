@@ -1,22 +1,18 @@
-// your code goes here
-$('.content').each( function(i){
-  
-    var bottom_of_object= $(this).offset().top + $(this).outerHeight();
-    var bottom_of_window = $(window).height();
-    
-    if( bottom_of_object > bottom_of_window){
-      $(this).addClass('hidden');
-    }
-});
-  
-  
-$(window).scroll( function(){
-    $('.hidden').each( function(i){
-        var bottom_of_object = $(this).offset().top + $(this).outerHeight();
-        var bottom_of_window = $(window).scrollTop() + $(window).height();
-    
-        if( bottom_of_window > bottom_of_object ){
-            $(this).animate({'opacity':'1'},700);
+document.addEventListener("DOMContentLoaded", function () {
+    const contents = document.querySelectorAll('.content');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); // only trigger once
         }
+      });
+    }, {
+      threshold: 0.1
     });
-});
+
+    contents.forEach(content => {
+      observer.observe(content);
+    });
+  });
